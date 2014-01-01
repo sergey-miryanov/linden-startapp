@@ -1,4 +1,4 @@
 linden-startapp
 ===============
 
-Android xtension for OpenFL for StartApp
+Android extension for OpenFL for StartApp
