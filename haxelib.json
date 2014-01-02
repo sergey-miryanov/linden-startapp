@@ -1,0 +1,14 @@
+{
+    "name"         : "linden-startapp",
+    "url"          : "https://github.com/sergey-miryanov/linden-startapp",
+    "license"      : "MIT",
+    "tags"         : ["openfl", "extension", "banner", "ad", "startapp", "android"],
+    "description"  : "linden-startapp is an Android extension for OpenFL for StartApp service.",
+    "version"      : "1.0.0",
+    "releasenote"  : "Initial version",
+    "contributors" : ["Sergey Miryanov"],
+    "dependencies" : {
+        "openfl"        : "",
+        "openfl-native" : "",
+    }
+}
