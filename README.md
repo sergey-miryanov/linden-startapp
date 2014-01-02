@@ -1,7 +1,7 @@
 linden-startapp
 ===============
 
-Android extension for OpenFL for StartApp
+Android extension for OpenFL for ![StartApp](http://startapp.com/)
 
 For properly work this extension requires that following pull requests
 was be merged:
