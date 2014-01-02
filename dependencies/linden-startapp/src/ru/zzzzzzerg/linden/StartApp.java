@@ -205,29 +205,51 @@ public class StartApp extends Extension
         });
   }
 
-  public static void showBanner(final int gravity)
+  public static boolean showBanner(final int gravity)
   {
-    callbackHandler.post(new Runnable()
-        {
-          public void run()
+    if(_frame.getParent() == null)
+    {
+      callbackHandler.post(new Runnable()
           {
-            _frameParams.gravity = gravity;
-            ViewGroup g = (ViewGroup)mainView.getParent();
-            g.addView(_frame);
-          }
-        });
+            public void run()
+            {
+              Log.d(tag, "Showing banner");
+              _frameParams.gravity = gravity;
+              ViewGroup g = (ViewGroup)mainView.getParent();
+              g.addView(_frame);
+              Log.d(tag, "Shown banner at " + g);
+            }
+          });
+      return true;
+    }
+    else
+    {
+      Log.e(tag, "Banner alreay shown");
+      return false;
+    }
   }
 
-  public static void hideBanner()
+  public static boolean hideBanner()
   {
-    callbackHandler.post(new Runnable()
-        {
-          public void run()
+    if(_frame.getParent() != null)
+    {
+      callbackHandler.post(new Runnable()
           {
-            ViewGroup g = (ViewGroup)mainView.getParent();
-            g.removeView(_frame);
-          }
-        });
+            public void run()
+            {
+              Log.d(tag, "Removing banner");
+              ViewGroup g = (ViewGroup)mainView.getParent();
+              g.removeView(_frame);
+              Log.d(tag, "Removed banner");
+            }
+          });
+      return true;
+    }
+    else
+    {
+      Log.e(tag, "Banner not shown yet");
+      return false;
+    }
   }
 
 }
