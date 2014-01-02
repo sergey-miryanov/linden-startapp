@@ -65,9 +65,6 @@ public class StartApp extends Extension
     _banner.setLayoutParams(_frameParams);
 
     _frame.addView(_banner);
-
-    ViewGroup g = (ViewGroup)mainView.getParent();
-    g.addView(_frame);
   }
 
 
@@ -204,6 +201,31 @@ public class StartApp extends Extension
                   .setAppName(tag)
                   );
             Log.d(tag, "Showed splash");
+          }
+        });
+  }
+
+  public static void showBanner(final int gravity)
+  {
+    callbackHandler.post(new Runnable()
+        {
+          public void run()
+          {
+            _frameParams.gravity = gravity;
+            ViewGroup g = (ViewGroup)mainView.getParent();
+            g.addView(_frame);
+          }
+        });
+  }
+
+  public static void hideBanner()
+  {
+    callbackHandler.post(new Runnable()
+        {
+          public void run()
+          {
+            ViewGroup g = (ViewGroup)mainView.getParent();
+            g.removeView(_frame);
           }
         });
   }
