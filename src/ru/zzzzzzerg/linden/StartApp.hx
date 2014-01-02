@@ -33,18 +33,18 @@ class StartApp
     _showSplashScreen();
   }
 
-  public static function showBanner(gravity : Int) : Bool
+  public static function showBanner(gravity : Int)
   {
     initJNI();
 
-    return _showBanner(gravity);
+    _showBanner(gravity);
   }
 
-  public static function hideBanner() : Bool
+  public static function hideBanner()
   {
     initJNI();
 
-    return _hideBanner();
+    _hideBanner();
   }
 
 
@@ -73,12 +73,12 @@ class StartApp
 
     if(_showBanner == null)
     {
-      _showBanner = getMethod("ru/zzzzzzerg/linden/StartApp", "showBanner", "(I)Z");
+      _showBanner = getMethod("ru/zzzzzzerg/linden/StartApp", "showBanner", "(I)V");
     }
 
     if(_hideBanner == null)
     {
-      _hideBanner = getMethod("ru/zzzzzzerg/linden/StartApp", "hideBanner", "()Z");
+      _hideBanner = getMethod("ru/zzzzzzerg/linden/StartApp", "hideBanner", "()V");
     }
 
   }

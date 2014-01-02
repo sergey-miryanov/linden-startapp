@@ -65,6 +65,11 @@ public class StartApp extends Extension
     _banner.setLayoutParams(_frameParams);
 
     _frame.addView(_banner);
+
+    ViewGroup g = (ViewGroup)mainView.getParent();
+    g.addView(_frame);
+
+    _banner.hideBanner();
   }
 
 
@@ -205,51 +210,31 @@ public class StartApp extends Extension
         });
   }
 
-  public static boolean showBanner(final int gravity)
+  public static void showBanner(final int gravity)
   {
-    if(_frame.getParent() == null)
-    {
-      callbackHandler.post(new Runnable()
+    callbackHandler.post(new Runnable()
+        {
+          public void run()
           {
-            public void run()
-            {
-              Log.d(tag, "Showing banner");
-              _frameParams.gravity = gravity;
-              ViewGroup g = (ViewGroup)mainView.getParent();
-              g.addView(_frame);
-              Log.d(tag, "Shown banner at " + g);
-            }
-          });
-      return true;
-    }
-    else
-    {
-      Log.e(tag, "Banner alreay shown");
-      return false;
-    }
+            Log.d(tag, "Showing banner");
+            _frameParams.gravity = gravity;
+            _banner.showBanner();
+            Log.d(tag, "Shown banner");
+          }
+        });
   }
 
-  public static boolean hideBanner()
+  public static void hideBanner()
   {
-    if(_frame.getParent() != null)
-    {
-      callbackHandler.post(new Runnable()
+    callbackHandler.post(new Runnable()
+        {
+          public void run()
           {
-            public void run()
-            {
-              Log.d(tag, "Removing banner");
-              ViewGroup g = (ViewGroup)mainView.getParent();
-              g.removeView(_frame);
-              Log.d(tag, "Removed banner");
-            }
-          });
-      return true;
-    }
-    else
-    {
-      Log.e(tag, "Banner not shown yet");
-      return false;
-    }
+            Log.d(tag, "Hiding banner");
+            _banner.hideBanner();
+            Log.d(tag, "Hide banner");
+          }
+        });
   }
 
 }
