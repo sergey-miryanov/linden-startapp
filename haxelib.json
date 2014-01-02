@@ -6,9 +6,9 @@
     "description"  : "linden-startapp is an Android extension for OpenFL for StartApp service.",
     "version"      : "1.0.0",
     "releasenote"  : "Initial version",
-    "contributors" : ["Sergey Miryanov"],
+    "contributors" : ["SergeyMiryanov"],
     "dependencies" : {
         "openfl"        : "",
-        "openfl-native" : "",
+        "openfl-native" : ""
     }
 }
