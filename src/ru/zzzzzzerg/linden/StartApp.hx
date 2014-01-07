@@ -3,7 +3,7 @@ package ru.zzzzzzerg.linden;
 #if android
 import openfl.utils.JNI;
 
-class StartApp
+class StartAppAndroid
 {
   public static function start(developerId : String, appId : String, showOnPause : Bool)
   {
@@ -91,6 +91,43 @@ class StartApp
   private static var _hideBanner : Dynamic = null;
 }
 
+typedef StartApp = StartAppAndroid;
+
+#else
+
+class StartAppFallback
+{
+  public static function start(developerId : String, appId : String, showOnPause : Bool)
+  {
+  }
+
+  public static function showInterstitial()
+  {
+  }
+
+  public static function showInterstitialBackButton()
+  {
+  }
+
+  public static function showSplashScreen()
+  {
+  }
+
+  public static function showBanner(gravity : Int)
+  {
+  }
+
+  public static function hideBanner()
+  {
+  }
+
+}
+
+typedef StartApp = StartAppFallback;
+
+#end
+
+
 // see http://developer.android.com/reference/android/view/Gravity.html
 class Gravity
 {
@@ -122,5 +159,3 @@ class Gravity
   public static var TOP : Int = 48;
   public static var VERTICAL_GRAVITY_MASK : Int = 112;
 }
-
-#end
